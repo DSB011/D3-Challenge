@@ -138,12 +138,3 @@ d3.csv("https://raw.githubusercontent.com/DSB011/D3-Challenge/master/Instruction
 
         })
  
-
-        // chartGroup.append("g")
-        //     .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 10})`)
-        //     .call(bottomAxis);
-        
-        // // Add y-axis
-        //     chartGroup.append("g")
-        //     .attr("transform", `translate(${0-chartMargin.left/2}, ${chartHeight/2})`)
-        //     .call(leftAxis);
