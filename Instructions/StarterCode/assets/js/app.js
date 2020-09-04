@@ -7,8 +7,8 @@ var svgHeight = 660;
 var chartMargin = {
     top: 30,
     right: 30,
-    bottom: 30,
-    left: 30
+    bottom: 120,
+    left: 120
   };
 
   // Define dimensions of the chart area
@@ -16,9 +16,9 @@ var chartMargin = {
   var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
   var chart = d3.select("#scatter")
-    .append("svg")
-    .attr("width", svgWidth)
-    .classed("chart",true);
+    // .append("div")
+    // .attr("width", svgWidth)
+    // .classed("chart",true);
 
    var svg = chart.append("svg") 
   .attr("height", svgHeight)
@@ -33,7 +33,7 @@ d3.select("body")
   .style("opacity", 1)
 
 // Load data from data.csv
-d3.csv("/assets/data/data.csv").then(function(healthData){
+d3.csv("https://raw.githubusercontent.com/DSB011/D3-Challenge/master/Instructions/StarterCode/assets/data/data.csv").then(function(healthData){
         //console.log(healthData);
    
 // d3.csv("assets/data/data.csv", function(error, healthData){
@@ -67,7 +67,7 @@ d3.csv("/assets/data/data.csv").then(function(healthData){
      var toolTip = d3.tip()
             .attr("class", "toolTip")
             .offset([80, -60])
-            .style("background", "lightblue")
+            .style("background", "lightyellow")
             .html(function(d){
              // console.log(d);
              var state = d.state;  
@@ -108,27 +108,29 @@ d3.csv("/assets/data/data.csv").then(function(healthData){
         // Add y-axis
             chartGroup.append("g")
                 .call(leftAxis);
+        
+        var yLabels = chartGroup.append("g")
+            .attr("transform", `translate(${0-chartMargin.left/2}, ${chartHeight/2})`)
+
 
         // text for y-axis
 
-            chartGroup.append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", 0 - chartMargin.left -5)
-                .attr("x", 0 - (chartHeight))
-                .attr("dy", "1em")
+            yLabels.append("text")
+                .attr("x", 0)
+                .attr("y", 0)
                 .attr("class", "axisText")
-                .style("text-anchor", "margintop")
                 .text("Population in Fair or Poor Health (%)")
-
+                .attr("transform", "rotate(-90)")
              // text for x-axis
              chartGroup.append("text")
-                  .attr("transform", "translate(" + (chartWidth/2)+ ","+ (chartHeight + chartMargin.top + 20)+")")
+                  .attr("transform", `translate( ${chartWidth/2}, ${chartHeight  + 30})`)
                   .attr("class", "axisText")
                   .style("text-anchor", "middle")
                   .text("Population Below the poverty line (%)");
 
             // Text for title
             chartGroup.append("text")
+                .attr("transform", `translate(${chartWidth / 2}, 0)`)
                 .style("text-anchor", "center")
                 .attr("class", "axisText")
                 .text("Health vs Poverty")
@@ -136,3 +138,12 @@ d3.csv("/assets/data/data.csv").then(function(healthData){
 
         })
  
+
+        // chartGroup.append("g")
+        //     .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 10})`)
+        //     .call(bottomAxis);
+        
+        // // Add y-axis
+        //     chartGroup.append("g")
+        //     .attr("transform", `translate(${0-chartMargin.left/2}, ${chartHeight/2})`)
+        //     .call(leftAxis);
