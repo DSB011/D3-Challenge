@@ -16,7 +16,8 @@ The data was taken from the U.S. Census Bureau and the Behavioral Risk Factor Su
 
 ## Visulaization
 
-Created a scatter plot between Healthcare vs. Poverty that represents each state with circle elements using D3 techniques.
+Created a scatter plot between Healthcare vs. Poverty that represents each state with circle elements using D3.
+
 <img src = "https://github.com/DSB011/D3-Challenge/blob/master/Instructions/Images/4-scatter.jpg">
             
 ## Tech Environment Used
